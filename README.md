@@ -1,5 +1,7 @@
 # ASD-STE100 — Guia de arquitetura da API
 
+https://www.asd-ste100.org/about_STE.html
+
 ## Estado do repositório
 
 Este repositório ainda não contém uma solução .NET, projetos, código-fonte ou testes. Este README registra a arquitetura planejada. Ele não descreve funcionalidades já implementadas.
