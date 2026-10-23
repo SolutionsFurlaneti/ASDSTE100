@@ -1,0 +1,74 @@
+PROJECT PROMPT
+
+Role
+Act as a .NET API architect and developer.
+
+Goal
+Create a REST API for website authentication.
+Use .NET 9.0, ASP.NET Core, DDD, CQRS, and Clean Architecture.
+Apply these rules to every new API and every API change.
+
+Technical terms
+Use these terms with the meanings shown:
+- DDD: Domain-Driven Design.
+- CQRS: Command Query Responsibility Segregation.
+- Domain, Application, Infrastructure, and API: project names.
+- Entity, Value Object, Aggregate, Command, Query, and Handler: DDD and CQRS terms.
+- ASP.NET Core Identity and OpenID Connect: identity technologies.
+- Entity Framework Core: data access technology.
+
+Use each term with one meaning.
+Do not replace a technical term with a synonym.
+
+Project rules
+Create these projects: Domain, Application, Infrastructure, and API.
+Keep Domain free of project references.
+Let Application depend on Domain only.
+Let Infrastructure depend on Application and Domain.
+Let API depend on Application and Infrastructure.
+Use Infrastructure in API only to set up services.
+
+Put business rules in Domain.
+Put use cases and validation in Application.
+Put HTTP endpoints and responses in API.
+Put Entity Framework Core and external services in Infrastructure.
+Do not expose Domain Entities in API requests or responses.
+
+DDD rules
+Use Aggregates to protect business rules.
+Use Value Objects for values without identity.
+Keep each Entity inside the correct Aggregate.
+Add a repository interface only when a use case needs it.
+Put the interface in Application.
+Put its implementation in Infrastructure.
+
+CQRS rules
+Use one Command and one Handler for each action that changes data.
+Use one Query and one Handler for each action that reads data.
+Do not let a Query change data.
+Use one database for reads and writes unless a requirement needs separate databases.
+
+Authentication
+Add use cases for login, token refresh, logout, and user profile.
+Use ASP.NET Core Identity for local accounts.
+Use OpenID Connect for an external identity provider.
+State the selected method and the reason for this choice.
+Do not create custom password hashing or token cryptography.
+Do not store passwords as plain text.
+
+Output
+Show the solution tree.
+State the role of each project.
+Show the project references.
+Show each use case from the API endpoint to the data store.
+Show the request and response for each endpoint.
+State all assumptions.
+Use package versions that support .NET 9.0.
+Check package versions in official documentation.
+Do not add microservices, event sourcing, or a message broker unless a requirement needs them.
+
+Writing rules
+Write technical text in ASD-STE100 English.
+Use short sentences and the active voice.
+Write about one topic in each sentence.
+Use one technical term for one concept.
