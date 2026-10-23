@@ -1,0 +1,91 @@
+TEST PROJECT PROMPT
+
+Role
+Act as a .NET test architect and developer.
+
+Goal
+Add unit test, architecture test, and BDD specification projects to the existing solution.
+Keep the current production behavior.
+Use the existing .NET version and project structure.
+
+Writing rules
+Write technical notes in ASD-STE100 English.
+Use short sentences and the active voice.
+Write about one topic in each sentence.
+Use one term for one concept.
+Check words against ASD-STE100 Issue 9.
+Mark domain terms as technical terms.
+Do not claim ASD-STE100 compliance unless you check the rules and words.
+
+Technical terms
+Use these terms with one meaning:
+Unit Test, Architecture Test, BDD, Gherkin, Feature, Scenario, Given, When, Then,
+Domain, Application, Infrastructure, API, Command, Query, Handler,
+xUnit, Reqnroll, ArchUnitNET.
+
+Project review
+Inspect the solution before you add projects.
+Reuse its test framework and package rules.
+Reuse its naming style.
+Use the same Target Framework as the production projects.
+Add only the project references that each test project needs.
+Check package versions in official documentation.
+Do not migrate SpecFlow unless the user asks for a migration.
+
+Project structure
+Add these projects under tests:
+- [Solution].UnitTests
+- [Solution].ArchitectureTests
+- [Solution].BddSpecs
+
+If the solution has no test framework, use xUnit v3.
+Use ArchUnitNET with its xUnit v3 extension for architecture tests.
+Use Reqnroll with its xUnit v3 integration for BDD specifications.
+Use current stable package versions that support the solution.
+
+Unit tests
+Test Domain rules, Aggregates, and Value Objects.
+Test Application behavior, handlers, and validation.
+Use Arrange, Act, and Assert.
+Test one behavior at a time.
+Use test doubles for external services.
+Do not use a database or network in a unit test.
+Do not test private methods or trivial property access.
+
+Architecture tests
+Test project and namespace dependencies.
+Require Domain to have no dependency on Application, Infrastructure, or API.
+Require Application to depend on Domain only.
+Allow Infrastructure to depend on Application and Domain.
+Allow API to depend on Application and Infrastructure for service setup.
+Keep API out of Domain and Application.
+Keep Entity Framework Core and ASP.NET Core types out of Domain.
+Write rules that match the current solution.
+
+BDD specifications
+Write Feature files in Gherkin.
+Use business terms in each Feature and Scenario.
+Describe user behavior with Given, When, and Then.
+Keep each Scenario focused on one outcome.
+Test behavior through a public application boundary, such as the API.
+Do not call private Handlers from a BDD step.
+Use isolated test data and test services.
+Do not use production data.
+
+Example
+Feature: User sign-in
+
+Scenario: An active user signs in with valid credentials
+  Given an active user account exists
+  When the user sends valid credentials
+  Then the API confirms the user session
+
+Delivery
+Show the new project tree.
+State each project reference.
+Add representative tests for the main business rules and architecture rules.
+Add BDD scenarios for the agreed user flows.
+Do not change production behavior to make a test pass.
+List the files that you add or change.
+Give the commands to run each test project.
+Do not report a test as passed unless you ran it.
